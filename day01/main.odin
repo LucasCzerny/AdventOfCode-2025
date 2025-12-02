@@ -20,11 +20,7 @@ main :: proc() {
 	part1_result := solve_part1(lines)
 	duration := time.tick_since(start)
 
-	fmt.printfln(
-		"Part 1 result (in %f ms): %d",
-		time.duration_milliseconds(duration),
-		part1_result,
-	)
+	fmt.printfln("Part 1 result (in %fms): %d", time.duration_milliseconds(duration), part1_result)
 
 	ensure(solve_part2({"L68", "L30", "R48", "L5", "R60", "L55", "L1", "L99", "R14", "L82"}) == 6)
 	ensure(solve_part2({"L1000"}) == 10)
@@ -33,10 +29,6 @@ main :: proc() {
 	part2_result := solve_part2(lines)
 	duration = time.tick_since(start)
 
-	fmt.printfln(
-		"Part 2 result (in %f ms): %d",
-		time.duration_milliseconds(duration),
-		part2_result,
-	)
+	fmt.printfln("Part 2 result (in %fms): %d", time.duration_milliseconds(duration), part2_result)
 }
 
