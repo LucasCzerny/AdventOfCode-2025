@@ -6,6 +6,7 @@ My happiness levels for each solution from 1-5: 🥲, 😬, 😌, 😃, 🤩
 |:----------------------------------------------|:------------------------------------------------|:------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | [Day 01](https://adventofcode.com/2025/day/1) | [part1.odin - 0.387ms](day01/part1.odin) - 😃   | [part2.odin - 1.673ms](day01/part2.odin) - 😌   | Suprisingly difficult for a day 1. Had some logic error and then just went for brute force solution solution for part 2                     |
 | [Day 02](https://adventofcode.com/2025/day/1) | [part1.odin - 145.378ms](day02/part1.odin) - 😃 | [part2.odin - 210.508ms](day02/part2.odin) - 😃 | Didn't feel like doing a ton of modulo math so i just did the string conversion. I'm running it on 16 threads, lol. It was fun though! :)   |
+| [Day 03](https://adventofcode.com/2025/day/1) | [part1.odin - 0.151ms](day03/part1.odin) - 🤩   | [part2.odin - 0.320ms](day03/part2.odin) - 🤩   | Very easy and fun puzzle today!                                                                                                             |
 <!-- | [Day xx](https://adventofcode.com/2025/day/1) | [part1.odin - xyzms](dayxx/part1.odin) - 🤩     | [part2.odin - xyzms](dayxx/part2.odin) - 🤩     | | -->
 
 ## How to run
