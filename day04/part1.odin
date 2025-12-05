@@ -8,6 +8,13 @@ solve_part1 :: proc(input: []string) -> int {
 
 	// same grid as the input but with padding
 	grid := make([][]int, height + 2)
+	defer {
+		for row in grid {
+			delete(row)
+		}
+		delete(grid)
+	}
+
 	for y in 0 ..< height + 2 {
 		grid[y] = make([]int, width + 2)
 

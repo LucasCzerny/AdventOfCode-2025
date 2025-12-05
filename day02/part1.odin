@@ -6,30 +6,34 @@ import "core:sync"
 import "core:thread"
 
 solve_part1 :: proc(input: string) -> u64 {
+	ranges := strings.split(input, ",")
+	defer delete(ranges)
+
 	threads: [NR_THREADS]^thread.Thread
+	thread_data: [NR_THREADS]Thread_Data
 	thread_index := 0
 
 	sum: u64
 	sum_mutex: sync.Mutex
 
-	thread_data := Thread_Data {
+	base_thread_data := Thread_Data {
 		sum       = &sum,
 		sum_mutex = &sum_mutex,
 	}
 
-	ranges := strings.split(input, ",")
 	for range in ranges {
 		from, to := parse_range(range)
 
 		t := &threads[thread_index]
 		if t^ != nil {
 			thread.join(t^)
+			thread.destroy(t^)
 		}
 
 		thread_index = (thread_index + 1) % NR_THREADS
 
-		data := new(Thread_Data)
-		data^ = thread_data
+		data := &thread_data[thread_index]
+		data^ = base_thread_data
 		data.from = from
 		data.to = to
 
@@ -39,10 +43,11 @@ solve_part1 :: proc(input: string) -> u64 {
 	for t in threads {
 		if t != nil {
 			thread.join(t)
+			thread.destroy(t)
 		}
 	}
 
-	return thread_data.sum^
+	return sum
 }
 
 check_range :: proc(thread_data_raw: rawptr) {

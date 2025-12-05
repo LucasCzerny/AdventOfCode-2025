@@ -15,6 +15,7 @@ N :: 12 // max nr of digits in the input
 
 parse_range :: proc(range: string) -> (i64, i64) {
 	bounds := strings.split(range, "-")
+	defer delete(bounds)
 
 	from, to: i64
 	ok: bool

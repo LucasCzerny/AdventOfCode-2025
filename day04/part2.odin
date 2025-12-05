@@ -1,13 +1,18 @@
 package aoc
 
-import "core:fmt"
-
 solve_part2 :: proc(input: []string) -> int {
 	width := len(input[0])
 	height := len(input)
 
 	// same grid as the input but with padding
 	grid := make([][]int, height + 2)
+	defer {
+		for row in grid {
+			delete(row)
+		}
+		delete(grid)
+	}
+
 	for y in 0 ..< height + 2 {
 		grid[y] = make([]int, width + 2)
 
