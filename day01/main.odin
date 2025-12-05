@@ -1,11 +1,32 @@
 package aoc
 
 import "core:fmt"
+import "core:mem"
 import "core:os"
 import "core:strings"
 import "core:time"
 
 main :: proc() {
+	when ODIN_DEBUG {
+		tracking_allocator: mem.Tracking_Allocator
+		mem.tracking_allocator_init(&tracking_allocator, context.allocator)
+		context.allocator = mem.tracking_allocator(&tracking_allocator)
+
+		defer {
+			for _, entry in tracking_allocator.allocation_map {
+				context.logger = {}
+				fmt.printfln("%v leaked %d bytes", entry.location, entry.size)
+			}
+
+			for entry in tracking_allocator.bad_free_array {
+				context.logger = {}
+				fmt.printfln("%v bad free on %v", entry.location, entry.memory)
+			}
+
+			mem.tracking_allocator_destroy(&tracking_allocator)
+		}
+	}
+
 	ensure(solve_part1({"L68", "L30", "R48", "L5", "R60", "L55", "L1", "L99", "R14", "L82"}) == 3)
 
 	data, err := os.read_entire_file_or_err("input/day01.txt")

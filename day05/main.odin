@@ -26,25 +26,14 @@ main :: proc() {
 			mem.tracking_allocator_destroy(&tracking_allocator)
 		}
 	}
-	
-	// odinfmt: disable
-	ensure(solve_part1({
-		"..@@.@@@@.",
-		"@@@.@.@.@@",
-		"@@@@@.@.@@",
-		"@.@@@@..@.",
-		"@@.@@@@.@@",
-		".@@@@@@@.@",
-		".@.@.@.@@@",
-		"@.@@@.@@@@",
-		".@@@@@@@@.",
-		"@.@.@@@.@.",
-	}) == 13)
-	// odinfmt: enable
 
-	data, err := os.read_entire_file_or_err("input/day04.txt")
+	ensure(
+		solve_part1({"3-5", "10-14", "16-20", "12-18", "", "1", "5", "8", "11", "17", "32"}) == 3,
+	)
+
+	data, err := os.read_entire_file_or_err("input/day05.txt")
 	defer delete(data)
-	ensure(err == {}, "Failed to find input/day04.txt")
+	ensure(err == {}, "Failed to find input/day05.txt")
 
 	input := strings.trim_right_space(string(data))
 	lines := strings.split_lines(input)
@@ -55,21 +44,8 @@ main :: proc() {
 	duration := time.tick_since(start)
 
 	fmt.printfln("Part 1 result (in %fms): %d", time.duration_milliseconds(duration), part1_result)
-	
-	// odinfmt: disable
-	ensure(solve_part2({
-		"..@@.@@@@.",
-		"@@@.@.@.@@",
-		"@@@@@.@.@@",
-		"@.@@@@..@.",
-		"@@.@@@@.@@",
-		".@@@@@@@.@",
-		".@.@.@.@@@",
-		"@.@@@.@@@@",
-		".@@@@@@@@.",
-		"@.@.@@@.@.",
-	}) == 43)
-	// odinfmt: enable
+
+	ensure(solve_part2({"3-5", "10-14", "16-20", "12-18"}) == 14)
 
 	start = time.tick_now()
 	part2_result := solve_part2(lines)
