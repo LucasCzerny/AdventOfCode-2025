@@ -8,8 +8,8 @@ solve_part2 :: proc(input: []string) -> int {
 
 	for line in input {
 		direction_str := line[0]
-		nr_rotations, ok := strconv.parse_int(line[1:], 10)
 
+		nr_rotations, ok := strconv.parse_int(line[1:], 10)
 		assert(ok)
 
 		direction := -1 if direction_str == 'L' else 1
