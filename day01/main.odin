@@ -14,12 +14,10 @@ main :: proc() {
 
 		defer {
 			for _, entry in tracking_allocator.allocation_map {
-				context.logger = {}
 				fmt.printfln("%v leaked %d bytes", entry.location, entry.size)
 			}
 
 			for entry in tracking_allocator.bad_free_array {
-				context.logger = {}
 				fmt.printfln("%v bad free on %v", entry.location, entry.memory)
 			}
 
