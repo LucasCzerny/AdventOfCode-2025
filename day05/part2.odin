@@ -6,7 +6,7 @@ solve_part2 :: proc(input: []string) -> u64 {
 	ranges := make([dynamic]Range)
 	defer delete(ranges)
 
-	for line, i in input {
+	for line in input {
 		if line == "" {
 			break
 		}

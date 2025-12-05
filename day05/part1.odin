@@ -3,12 +3,6 @@ package aoc
 import "core:sort"
 import "core:strconv"
 
-Ranges_Tree_Node :: struct {
-	left:  ^Ranges_Tree_Node,
-	right: ^Ranges_Tree_Node,
-	range: Range,
-}
-
 solve_part1 :: proc(input: []string) -> int {
 	ranges := make([dynamic]Range)
 	defer delete(ranges)
