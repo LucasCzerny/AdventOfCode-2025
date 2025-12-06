@@ -9,7 +9,8 @@ My happiness levels for each solution from 1-5: 🥲, 😬, 😌, 😃, 🤩
 | [Day 03](https://adventofcode.com/2025/day/3) | [part1.odin - 0.104ms](day03/part1.odin) - 🤩   | [part2.odin - 0.215ms](day03/part2.odin) - 🤩   | Very easy and fun puzzle today!                                                                                                             |
 | [Day 04](https://adventofcode.com/2025/day/4) | [part1.odin - 1.315ms](day04/part1.odin) - 🤩   | [part2.odin - 2.963ms](day04/part2.odin) - 🤩   | Wasn't happy with my initial solution so I rewrote it. I think it turned out pretty nice                                                    |
 | [Day 05](https://adventofcode.com/2025/day/5) | [part1.odin - 0.855ms](day05/part1.odin) - 🤩   | [part2.odin - 0.365ms](day05/part2.odin) - 🤩   | Wanted to use trees at first but it was faster to just sort that shit                                                                       |
-<!-- | [Day xx](https://adventofcode.com/2025/day/6) | [part1.odin - xyzms](dayxx/part1.odin) - 🤩     | [part2.odin - xyzms](dayxx/part2.odin) - 🤩     | | -->
+| [Day 06](https://adventofcode.com/2025/day/6) | [part1.odin - 3.384ms](day06/part1.odin) - 🤩   | [part2.odin - 0.591ms](day06/part2.odin) - 🤩   | I used regex for part1 (took me a bit to get right cuz I suck at regex). Part2 was ez                                                       |
+<!-- | [Day xx](https://adventofcode.com/2025/day/7) | [part1.odin - xyzms](dayxx/part1.odin) - 🤩     | [part2.odin - xyzms](dayxx/part2.odin) - 🤩     | | -->
 
 ## How to run
 

@@ -2,3 +2,4 @@ build/
 input/
 .vscode/
 template*
+*.bin

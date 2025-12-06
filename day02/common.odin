@@ -1,5 +1,6 @@
 package aoc
 
+import "core:fmt"
 import "core:strconv"
 import "core:strings"
 import "core:sync"
@@ -17,14 +18,8 @@ parse_range :: proc(range: string) -> (i64, i64) {
 	bounds := strings.split(range, "-")
 	defer delete(bounds)
 
-	from, to: i64
-	ok: bool
-
-	from, ok = strconv.parse_i64(bounds[0], 10)
-	assert(ok)
-
-	to, ok = strconv.parse_i64(bounds[1], 10)
-	assert(ok)
+	from := strconv.parse_i64(bounds[0], 10) or_else fmt.panicf("Failed to parse \"from\"")
+	to := strconv.parse_i64(bounds[1], 10) or_else fmt.panicf("Failed to parse \"to\"")
 
 	return from, to
 }
