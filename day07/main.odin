@@ -1,11 +1,30 @@
 package aoc
 
 import "core:fmt"
+import "core:mem"
 import "core:os"
 import "core:strings"
 import "core:time"
 
 main :: proc() {
+	when ODIN_DEBUG {
+		tracking_allocator: mem.Tracking_Allocator
+		mem.tracking_allocator_init(&tracking_allocator, context.allocator)
+		context.allocator = mem.tracking_allocator(&tracking_allocator)
+
+		defer {
+			for _, entry in tracking_allocator.allocation_map {
+				fmt.printfln("%v leaked %d bytes", entry.location, entry.size)
+			}
+
+			for entry in tracking_allocator.bad_free_array {
+				fmt.printfln("%v bad free on %v", entry.location, entry.memory)
+			}
+
+			mem.tracking_allocator_destroy(&tracking_allocator)
+		}
+	}
+	
 	// odinfmt: disable
 	ensure(solve_part1({
 		".......S.......",

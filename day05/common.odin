@@ -1,6 +1,5 @@
 package aoc
 
-import "core:fmt"
 import "core:strconv"
 import "core:strings"
 
@@ -25,8 +24,8 @@ parse_range :: proc(range: string) -> Range {
 	from, to: u64
 	ok: bool
 
-	from = strconv.parse_u64(split[0]) or_else fmt.panicf("Failed to parse \"from\"")
-	to = strconv.parse_u64(split[1]) or_else fmt.panicf("Failed to parse \"to\"")
+	from = strconv.parse_u64(split[0]) or_else panic("Failed to parse \"from\"")
+	to = strconv.parse_u64(split[1]) or_else panic("Failed to parse \"to\"")
 
 	return Range{from, to}
 }

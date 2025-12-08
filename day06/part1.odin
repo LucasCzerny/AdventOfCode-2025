@@ -1,10 +1,11 @@
 package aoc
 
-import "core:fmt"
 import "core:strconv"
 import "core:text/regex"
 
 solve_part1 :: proc(input: []string) -> u64 {
+	context.allocator = context.temp_allocator
+
 	number_regex := `\d+`
 	operation_regex := `\+|\*`
 
@@ -12,11 +13,9 @@ solve_part1 :: proc(input: []string) -> u64 {
 	defer delete(operations)
 
 	operation_it :=
-		regex.create_iterator(
-			input[len(input) - 1],
-			operation_regex,
-			permanent_allocator = context.temp_allocator,
-		) or_else fmt.panicf("Failed to create the match iterator")
+		regex.create_iterator(input[len(input) - 1], operation_regex) or_else panic(
+			"Failed to create the match iterator",
+		)
 
 	for true {
 		capture, _, matches_left := regex.match_iterator(&operation_it)
@@ -37,21 +36,13 @@ solve_part1 :: proc(input: []string) -> u64 {
 		equation = make([]u64, numbers_per_equation)
 	}
 
-	defer {
-		for equation in equations {
-			delete(equation)
-		}
-
-		delete(equations)
-	}
-
 	for row in 0 ..< numbers_per_equation {
 		it :=
 			regex.create_iterator(
 				input[row],
 				number_regex,
 				permanent_allocator = context.temp_allocator,
-			) or_else fmt.panicf("Failed to create the match iterator")
+			) or_else panic("Failed to create the match iterator")
 
 		for i := 0; true; i += 1 {
 			capture, _, matches_left := regex.match_iterator(&it)
@@ -60,15 +51,11 @@ solve_part1 :: proc(input: []string) -> u64 {
 			}
 
 			number :=
-				strconv.parse_u64(capture.groups[0]) or_else fmt.panicf(
-					"Failed to parse the number",
-				)
+				strconv.parse_u64(capture.groups[0]) or_else panic("Failed to parse the number")
 
 			equations[i][row] = number
 		}
 	}
-
-	free_all(context.temp_allocator)
 
 	sum: u64 = 0
 
@@ -81,6 +68,8 @@ solve_part1 :: proc(input: []string) -> u64 {
 			sum += multiply_numbers(equation)
 		}
 	}
+
+	free_all(context.temp_allocator)
 
 	return sum
 }

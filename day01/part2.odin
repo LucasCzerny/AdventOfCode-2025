@@ -1,6 +1,5 @@
 package aoc
 
-import "core:fmt"
 import "core:strconv"
 
 solve_part2 :: proc(input: []string) -> int {
@@ -11,7 +10,7 @@ solve_part2 :: proc(input: []string) -> int {
 		direction_str := line[0]
 
 		nr_rotations :=
-			strconv.parse_int(line[1:], 10) or_else fmt.panicf("Failed to parse \"nr_rotations\"")
+			strconv.parse_int(line[1:], 10) or_else panic("Failed to parse \"nr_rotations\"")
 
 		direction := -1 if direction_str == 'L' else 1
 
