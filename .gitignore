@@ -2,6 +2,7 @@ build/
 input/
 template*
 *.bin
+debug_build
 
 .vscode
 .vscode/*
